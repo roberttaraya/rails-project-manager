@@ -5,5 +5,23 @@
   <%= @project.name %>
 </p>
 
+<p>
+  <strong>Tasks:</strong>
+  <table>
+    <th>
+      <td>Task</td>
+      <td>Description</td>
+      <td>Difficulty</td>
+    </th>
+    <tr>
+      <% @tasks.each do |task| %>
+        <td><%= task.name %></td>
+        <td><%= task.description %></td>
+        <td><%= task.difficulty_level %></td>
+      <% end %>
+    </tr>
+  </table>
+</p>
+
 <%= link_to 'Edit', edit_project_path(@project) %> |
 <%= link_to 'Back', projects_path %>
