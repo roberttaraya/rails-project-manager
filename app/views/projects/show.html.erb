@@ -7,19 +7,23 @@
 
 <p>
   <strong>Tasks:</strong>
-  <table>
-    <th>
-      <td>Task</td>
-      <td>Description</td>
-      <td>Difficulty</td>
-    </th>
+  <table border=1>
     <tr>
-      <% @tasks.each do |task| %>
+      <th>Task</th>
+      <th>Description</th>
+      <th>Difficulty</th>
+      <th>Actions</th>
+    </tr>
+    <% @tasks.each do |task| %>
+      <tr>
         <td><%= task.name %></td>
         <td><%= task.description %></td>
         <td><%= task.difficulty_level %></td>
-      <% end %>
-    </tr>
+        <td>
+          <%= link_to "Edit", edit_project_task_path(@project, task) %>
+        </td>
+      </tr>
+    <% end %>
   </table>
 </p>
 

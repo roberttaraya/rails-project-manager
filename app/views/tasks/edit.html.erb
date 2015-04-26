@@ -1,0 +1,15 @@
+<p>
+  <strong>Task:</strong>
+  <%= form_for [@project, @task] do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %><br>
+
+    <%= f.label :description %>
+    <%= f.text_field :description %><br>
+
+    <%= f.label :difficulty_level %>
+    <%= f.text_field :difficulty_level %><br>
+
+    <%= f.submit %> <%= link_to "Cancel", project_path(@project) %>
+  <% end %>
+</p>
