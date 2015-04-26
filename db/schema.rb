@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 20150426170029) do
     t.string   "name"
     t.text     "description"
     t.integer  "difficulty_level"
+    t.integer  "project_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
