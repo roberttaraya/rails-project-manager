@@ -1,0 +1,8 @@
+<tr>
+  <td><%= task.name %></td>
+  <td><%= task.description %></td>
+  <td><%= task.difficulty_level %></td>
+  <td>
+    <%= link_to "Edit", edit_project_task_path(task.project, task) %>
+  </td>
+</tr>

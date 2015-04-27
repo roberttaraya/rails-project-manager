@@ -1,12 +1,16 @@
 class TasksController < ApplicationController
+  before_action :set_project, only: [:index, :edit, :update]
+
+  def index
+    @tasks = @project.tasks
+  end
+
   def edit
     @task = Task.find(params[:id])
-    @project = @task.project
   end
 
   def update
     @task = Task.find(params[:id])
-    @project = @task.project
 
     if @task.update(project_task_params)
       flash[:notice] = "Task updated."
@@ -18,6 +22,10 @@ class TasksController < ApplicationController
   end
 
   private
+
+  def set_project
+    @project = Project.find(params[:project_id])
+  end
 
   def project_task_params
     params.require(:task).permit(:name, :description, :difficulty_level)

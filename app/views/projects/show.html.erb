@@ -3,29 +3,16 @@
 <p>
   <strong>Name:</strong>
   <%= @project.name %>
+  <%= link_to 'Edit', edit_project_path(@project) %> |
+  <%= link_to 'Back', projects_path %>
 </p>
 
-<p>
-  <strong>Tasks:</strong>
-  <table border=1>
-    <tr>
-      <th>Task</th>
-      <th>Description</th>
-      <th>Difficulty</th>
-      <th>Actions</th>
-    </tr>
-    <% @tasks.each do |task| %>
-      <tr>
-        <td><%= task.name %></td>
-        <td><%= task.description %></td>
-        <td><%= task.difficulty_level %></td>
-        <td>
-          <%= link_to "Edit", edit_project_task_path(@project, task) %>
-        </td>
-      </tr>
-    <% end %>
-  </table>
-</p>
+<p class="task-list"></p>
 
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
+<% content_for :javascript do %>
+<script type="text/javascript">
+  $(function(){
+    $(".task-list").load("/projects/<%= @project.id %>/tasks");
+  });
+</script>
+<% end %>
