@@ -3,6 +3,11 @@ class TasksController < ApplicationController
 
   def index
     @tasks = @project.tasks
+
+    respond_to do |format|
+      format.json { render json: @tasks }
+      format.html
+    end
   end
 
   def edit
